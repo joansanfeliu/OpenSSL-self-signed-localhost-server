@@ -6,15 +6,15 @@ After cloning this repo, run:
 ```
 npm install
 ```
-to install ExpressJS (needed by the server).
+to install ExpressJS.
 
 # Use
-To generate the server key and certificate, run:
+To generate the server key and certificate:
 ```
 ./generateKeys.sh
 ```
 
-To start the server, run:
+To start the server:
 ```
 npm start
 ```
