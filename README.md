@@ -1,14 +1,7 @@
 # OpenSSL-self-signed-localhost-server
-A NodeJS + ExpressJS server running on localhost with a self signed certificate
+A NodeJS server running on localhost with a self signed certificate
 
-# Installation
-After cloning this repo, run:
-```
-npm install
-```
-to install ExpressJS.
-
-# Use
+# Usage
 To generate the server key and certificate:
 ```
 ./generateKeys.sh
@@ -16,7 +9,7 @@ To generate the server key and certificate:
 
 To start the server:
 ```
-npm start
+node server.js
 ```
 
 # License
