@@ -1,5 +1,5 @@
-# OpenSSL-self-signed-localhost-server
-A NodeJS server running on localhost with a self signed certificate
+# node-tls-server
+A NodeJS TLS server with a self signed certificate
 
 # Usage
 To generate the server key and certificate:
