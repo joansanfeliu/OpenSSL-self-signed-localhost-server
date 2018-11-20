@@ -1,2 +1,3 @@
 #!/bin/bash
-openssl req -nodes -new -x509 -sha256 -days 1024 -keyout server.key -out server.cert
+
+openssl req -x509 -nodes -newkey rsa:2048 -subj '/CN=localhost' -keyout server-key.pem -out server-cert.pem -days 365

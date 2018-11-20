@@ -14,28 +14,37 @@
  * limitations under the License.
  */
 
-/* Load the required libs */
-var path = require('path')
-var fs = require('fs')
-var express = require('express')
-var https = require('https')
+const path = require('path')
+const fs = require('fs')
+const tls = require('tls')
 
 /* Change to use a custom port */
-const PORT = 443
+const PORT = 32000
 
 /* Load the server self signed certificate generated with generateKeys.sh */
-var certOptions = {
-	  key: fs.readFileSync(path.resolve('server.key')),
-	  cert: fs.readFileSync(path.resolve('server.cert'))
+const options = {
+	  key: fs.readFileSync(path.resolve('server-key.pem')),
+	  cert: fs.readFileSync(path.resolve('server-cert.pem'))
 }
 
-/* Load ExpressJS */
-var app = express()
-
-/* Send a response when connected */
-app.get('/', (req, res) => {
-	  res.send('Hello World')
+/* Create the server */
+const server = tls.createServer(options, (socket) => {
+	socket.setEncoding('utf8')
+	socket.write("Hello World" + '\n')
+	socket.on('data', function(data) {
+		console.log(data)
+	  })
+	socket.on('end', socket.end)
+	socket.on('error', (error) => {
+		console.log(error)
+		socket.destroy()
+	})
 })
 
-/* Create the server */
-var server = https.createServer(certOptions, app).listen(PORT)
+server.listen(PORT, () => {
+	console.log('listening to https://localhost:' + PORT)
+})
+
+server.on('error', (error) => {
+	console.log(error)
+})
