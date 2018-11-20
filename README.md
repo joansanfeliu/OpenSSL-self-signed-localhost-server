@@ -12,6 +12,12 @@ To start the server:
 node server.js
 ```
 
+# Example
+Try to connect to the server with:
+```
+openssl s_client -connect localhost:<PORT>
+```
+
 # License
 ```
   Copyright (c) 2018 joansanfeliu
